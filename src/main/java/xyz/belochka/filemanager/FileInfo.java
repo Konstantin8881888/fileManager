@@ -67,7 +67,7 @@ public class FileInfo {
             {
                 this.size = -1L;
             }
-            this.lastModified = LocalDateTime.ofInstant(Files.getLastModifiedTime(path).toInstant(), ZoneOffset.ofHours(0));
+            this.lastModified = LocalDateTime.ofInstant(Files.getLastModifiedTime(path).toInstant(), ZoneOffset.ofHours(3));
         } catch (IOException e) {
             throw new RuntimeException("Ошибка создания информации о файле!");
         }
