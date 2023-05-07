@@ -58,6 +58,14 @@ public class FileInfo {
         this.lastModified = lastModified;
     }
 
+    public FileInfo(String fileName){
+        this.fileName = fileName;
+        this.size = -2L;
+        this.type = FileType.DIRECTORY;
+        this.lastModified = LocalDateTime.of(00,01, 01, 00, 00);
+
+    }
+
     public FileInfo(Path path){
         try {
             this.fileName = path.getFileName().toString();
