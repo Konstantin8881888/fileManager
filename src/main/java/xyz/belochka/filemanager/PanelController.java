@@ -98,6 +98,7 @@ public class PanelController implements Initializable {
         });
 
         updateList(Paths.get("."));
+
     }
     public void updateList(Path path){
         filesTable.getItems().clear();
@@ -107,6 +108,7 @@ public class PanelController implements Initializable {
             filesTable.getItems().add(new FileInfo("[ .. ]"));
             filesTable.getItems().addAll(Files.list(path).map(FileInfo::new).collect(Collectors.toList()));
             filesTable.sort();
+            filesTable.getSelectionModel().selectFirst();
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Не удалось обновить список файлов!", ButtonType.OK);
             alert.showAndWait();
@@ -130,7 +132,7 @@ public class PanelController implements Initializable {
     {
         if (!filesTable.isFocused())
         {
-            return null;
+            filesTable.getSelectionModel().selectFirst();
         }
         return filesTable.getSelectionModel().getSelectedItem().getFileName();
     }
